@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+body{
+    width: 100%;
+    /*height: 95vh;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+.Fondo{
+    position: absolute;
+    z-index: -1;
+    width: 147%;
+    margin-top: -2%;
+}
+.Figura_Fondo{
+    fill: #A0A0F8;
+}
+.Nav-Bar{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 7vh;
+}
+.Contenedor_Logo{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.Logo{
+    width: 4%;
+    margin-right: 4%;
+}
+.Logo_Nombre{
+    font-size: 171%;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
+.Contenedor_botones{
+    width: 23%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.Boton{
+    text-decoration: none;
+    color: #000000;
+    font-size: 171%;
+    padding-right: 4%;
+    padding-left: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
+.Boton:hover{
+    background: #A0A0F8;
+}
+.Contenedor_Cabecera{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.Imagen_Cabecera{
+    width: 50%;
+	overflow: hidden;
+	border:none;
+}
+.Imagen_Montaje{
+    width: 150%;
+	height: 70vh;
+	transform: scale(0.8);
+	overflow: hidden;
+	border:none;
+}
+.Contenedor_Titulo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+}
+.Titulo{
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 188%;
+}
+.Descripcion_Titulo{
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    text-align: justify;
+    font-weight: normal;
+    font-size: 100%;
+}
+.Contenedor_Contenido{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Subtitulo{
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+}
+.Texto{
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    text-align: justify;
+}
+.Codigo{
+    color: #8080ff;
+    text-align: justify;
+    font-weight: bold;
+}
+.Izquierda{
+	margin-left: 0;
+	margin-right: auto;
+}
+.link{
+	text-decoration: none;
+	color: #8080ff;
+}
+.link:hover{
+	color: #000000;
+	background: #8080ff;
+}
+.Fila{
+	display: flex;
+	flex-direction: row;
+}
+.Tabla{
+	width: 95%;
+}
+.Tabla .Color_2{
+	background: #adabd6;
+	text-align: center;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	padding-top: 0.5vh;
+	padding-bottom: 0.5vh;
+}
+.Tabla .Color_1{
+	background: #cdcce6;
+	text-align: center;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	padding-top: 0.5vh;
+	padding-bottom: 0.5vh;
+}

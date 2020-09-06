@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Seccion_2_GAMOS</title>
+<link href="Styles_Seccion_2_GAMOS.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    
+    <svg viewBox="0 0 1920 500" class="Fondo">
+        <path class="Figura_Fondo" d="M0,500c0,0,322.4,2.8,481.3-60s182.1-119.2,182.1-119.2s83.3-148.7,183.3-184.6
+	S1012.1,0,1012.1,0H0V500z"/>
+    </svg>
+    
+    <div class="Nav-Bar">
+    
+        <div class="Contenedor_Logo">
+            <img src="Img/Logo_Andes.svg" alt="logo" class="Logo">
+            <a class="Logo_Nombre">Laboratorio de Altas Energías</a>
+        </div>
+        
+        <div class="Contenedor_botones">
+            <a href="Secciones_GAMOS.html" class="Boton">Secciones</a>
+            <a href="https://hep.uniandes.edu.co/index.php/es/" class="Boton">Recursos</a>
+        </div>             
+    </div>   
+    
+    <div class="Contenedor_Cabecera">
+        <img src="Img/Seccion_2_GAMOS.svg" alt="Seccion_2_GAMOS" class="Imagen_Cabecera">
+        <div class="Contenedor_Titulo">
+            <p class="Titulo">Activación en Servidor</p>
+            <p class="Descripcion_Titulo">En esta sección se explicará cómo acceder al cluster desde una terminal. Así mismo se describirá cómo activar GAMOS en los servidores DZero y DZero1 para su posterior ejecución. Por último se explicarán algunos comandos de terminal útiles que podrían mejorar la experiencia de usuario con el uso de GAMOS.  </p>
+        </div>
+    </div>
+	
+	<div class="Contenedor_Contenido">
+		<p class="Subtitulo">Acceder a DZero o Dzero1</p>
+		<p class="Texto Izquierda">Para acceder a DZero basta con escribir:</p>
+		<p class="Texto Codigo">ssh -Y user@dzero.uniandes.edu.co</p>
+		<p class="Texto Izquierda">Mientras que para acceder a DZero1 se necesita ejecutar el siguiente comando:</p>
+		<p class="Texto Codigo">ssh -Y user@dzero1.uniandes.edu.co</p>
+		<p class="Texto Izquierda">En los anteriores comandos la palabra <i>user</i> debe cambiarse por el usuario de correo electrónico de la Universidad de los Andes. Posteriormente se les pedirá la contraseña personal y una vez la introduzcan ya estarán dentro del servidor escogido, ya sea Dzero o Dzero1.</p>
+		
+		<p class="Subtitulo">Activación de GAMOS en DZero o DZero1</p>
+		<p class="Texto">Una vez se ha entrado al cluster, el siguiente paso a seguir es activar GAMOS a través de la ejecución de un script de bash. Los scripts necesarios pueden ser descargados ejecutando el siguiente comando:</p>
+		<p class="Texto Codigo">git clone https://github.com/Altas-Energias/scripts-GAMOS.git</p>
+		<p class="Texto Izquierda">Una vez descargados los scripts, debe moverse a la carpeta que los contiene. Para esto debe ejecutar:</p>
+		<p class="Texto Codigo">cd scripts-GAMOS</p>
+		<p class="Texto">Antes de ejecutar alguno de los scripts, primero debe cambiar la palabra <i>user</i> dentro de cada uno de ellos por el usuario de su correo electrónico institucional. Esto se puede lograr usando alguno de los editores de texto que tiene por defecto cada servidor. Algunos de los editores de texto que puede usar son <i>gedit, nano o vim</i>. Si por ejemplo decide modificar el script <i>iniciar_gamos_dzero.sh</i> con <i>nano</i>, debe ejecutar:</p>
+		<p class="Texto Codigo">nano iniciar_gamos_dzero.sh</p>
+		<p class="Texto">Cuando esté dentro del editor de texto, debe ir hasta donde se encuentra la palabra <i>user</i> usando las flechas del teclado y debe borrar la palabra, cambiandola por su usuario de correo institucional. Una vez haya puesto su usuario, puede salir del editor de texto presionando <i>Ctrl+x</i>. Antes de salir se le preguntará si desea guardar el archivo, a lo que usted debe responder <i>Si</i> o simplemente <i>S</i>. Posteriormente se le preguntará con qué nombre quiere guardar el archivo. Si desea mantener el nombre del archivo solo debe presionar <i>Enter</i> y si no puede cambiarlo y luego presionar <i>Enter</i>. Luego de modificar cada uno de los scripts puede ejecutarlos a través del comando <i>source</i>. Si desea activar GAMOS DZero puede ejecutar:</p>
+		<p class="Texto Codigo">source iniciar_gamos_dzero.sh</p>
+		<p class="Texto Izquierda">o si desea activar DZero1 puede usar:</p>
+		<p class="Texto Codigo">source iniciar_gamos_dzero1.sh</p>
+		<p class="Texto">y ya GAMOS quedaría listo para ser usado. Los scripts por defecto, luego de ser ejecutados, cambian la ubicación del usuario, de manera que ya no estarán en la carpeta <i>scripts-GAMOS</i> sino que serán trasladados a la ubicación a la que por defecto un usuario entra cuando accede a alguno de los servidores. Esta ubicación por defecto es <i>/home/user/</i>, donde <i>user</i> es su usuario de correo institucional. </p>
+		<p class="Subtitulo">Comandos de consola útiles</p>
+		<p class="Texto Izquierda">Algunos comandos de consola útiles para navegar dentro de DZero o DZero1 y mejorar la experiencia de cualquier usuario son las siguientes:</p>
+		<ul>
+			<li class="Texto"><b class="Texto Codigo">ls</b>: Permite visualizar todo lo que se encuentre dentro de la carpeta en la cual está actualmente</li>
+			<li class="Texto"><b class="Texto Codigo">pwd</b>: Permite obtener la dirección (o ruta) de la carpeta en la cual está actualmente.</li>
+			<li class="Texto"><b class="Texto Codigo">cd destino</b>: Permite moverse desde la carpeta actual hasta la carpeta de <b>destino</b>. El <b>destino</b> puede ser tanto una carpeta específica como una dirección. Para moverse a la carpeta que contiene a aquella en la cual está actualmente ubicado basta con ejecutar <b>cd ..</b> </li>
+			<li class="Texto"><b class="Texto Codigo">mkdir nombre_de_carpeta</b>: Permite crear una carpeta con nombre <b>nombre_de_carpeta</b> dentro de la carpeta en la cual se encuentra actualmente. </li>
+			<li class="Texto"><b class="Texto Codigo">rm archivo_o_carpeta</b>: Permite eliminar tanto archivos como directorios. Cuando hay que eliminar una carpeta (con todo su contenido dentro) se usa, luego de <b>rm</b>, la opción (o flag) <b>-R</b>. </li>
+			<li class="Texto"><b class="Texto Codigo">mv elemento destino</b>: El comando <b>mv</b>, en principio, sirve para mover un <b>elemento</b> (archivo o carpeta) desde el punto donde se encuentra hasta un <b>destino</b>. También el comando <b>mv</b> sirve para cambiar el nombre de un archivo o carpeta. En este caso en particular en el lugar de <b>elemento</b> se pone el nombre del archivo al cual queremos cambiar su nombre y en el <b>destino</b> se escribe el nuevo nombre.</li>
+			<li class="Texto"><b class="Texto Codigo">mv elemento destino</b>: El comando <b>mv</b>, en principio, sirve para mover un <b>elemento</b> (archivo o carpeta) desde el punto donde se encuentra hasta un <b>destino</b>. También el comando <b>mv</b> sirve para cambiar el nombre de un archivo o carpeta. En este caso en particular en el lugar de <b>elemento</b> se pone el nombre del archivo al cual queremos cambiar su nombre y en el <b>destino</b> se escribe el nuevo nombre.</li>
+			<li class="Texto"><b class="Texto Codigo">cp elemento destino</b>: Permite copiar un <b>elemento</b> y mandarlo a un <b>destino</b> específico. Si se requiere copiar una carpeta, es necesario que luego de <b>cp</b> se use la opción (flag) <b>-r</b>.</li>
+			<li class="Texto"><b class="Texto Codigo">scp -r archivo_o_carpeta user@dzero.uniandes.edu.co:/home/user </b>: Permite subir tanto un solo archivo como una carpeta desde el PC personal a la carpeta por defecto de Dzero (<i>/home/user</i>). Si se desea subir el archivo o carpeta a DZero1 basta con cambiar DZero por DZero1 en el comando ejecutado. En <b>archivo_o_carpeta</b> se ubica el nombre del archivo o carpeta que se desea subir al servidor. También puede ubicarse la dirección (o ruta) del archivo o carpeta. Cabe resaltar que este comando se ejecuta estando fuera del servidor.</li>
+			<li class="Texto"><b class="Texto Codigo">scp -r user@dzero.uniandes.edu.co:/home/user/archivo_o_carpeta direccion </b>: Permite descargar tanto un solo archivo como una carpeta desde el servidor a una carpeta con cierta <b>direccion</b> (o ruta) dentro de su computador personal. Si se desea descargar el archivo o carpeta desde DZero1 basta con cambiar DZero por DZero1 en el comando ejecutado. En <b>archivo_o_carpeta</b> se escribe el nombre del archivo o carpeta que se desea descargar desde el servidor (siempre y cuando este se encuentre dentro de <i>/home/user/</i>). Si desea descargar un archivo o carpeta desde otra ruta que no sea <i>/home/user/</i> puede cambiar sin problemas <b>/home/user/archivo_o_carpeta</b> por la dirección que desee dentro del servidor. Cabe resaltar que este comando se ejecuta estando fuera del servidor.</li>
+		</ul>
+	</div>
+
+	
+    
+</body>
+</html>

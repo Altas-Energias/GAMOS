@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+body{
+    background-image: url(Img/Background.svg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    width: 100%;
+    height: 100vh;
+    display: flex;  /* Activar orden en la pagina */
+    flex-direction: column; /* Como se organizan los elementos dentro del cuerpo */
+    align-items: center; /*centrar los elementos dentro de mi cuerpo*/
+    overflow: hidden; /*Ocultar barras de navegacion y lo que este por fuera del cuerpo*/
+}
+.Nav-Bar{ /*Configuracion de la barra de navegacion*/
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+}
+.Contenedor_Logo{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Logo{
+    width: 8%;
+    margin-right: 4%;
+}
+.Logo_Nombre{
+    font-size: 171%;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
+.Contenedor_botones{
+    width:40%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+.Boton{
+    text-decoration: none;
+    color: #000000;
+    font-size: 171%;
+    padding-right: 4%;
+    padding-left: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
+.Boton:hover{
+    background: #A0A0F8;
+}
+
+.Contenedor_Contenido{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    height: 90vh;
+}
+
+.Contenido_texto{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Contenido_Imagen{
+    width:40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Titulo{
+    text-align: center;
+    font-size: 239%;
+    width: 68%;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    margin-bottom: 20vh;
+}
+
+.Descripcion{
+    width: 62%;
+    font-size: 150%;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
+
+.Imagen{
+    width: 50%;
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Seccion_2_GAMOS</title>
+<link href="Styles_Seccion_2_GAMOS.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    
+    <svg viewBox="0 0 1920 500" class="Fondo">
+        <path class="Figura_Fondo" d="M0,500c0,0,322.4,2.8,481.3-60s182.1-119.2,182.1-119.2s83.3-148.7,183.3-184.6
+	S1012.1,0,1012.1,0H0V500z"/>
+    </svg>
+    
+    <div class="Nav-Bar">
+    
+        <div class="Contenedor_Logo">
+            <img src="Img/Logo_Andes.svg" alt="logo" class="Logo">
+            <a class="Logo_Nombre">Laboratorio de Altas Energías</a>
+        </div>
+        
+        <div class="Contenedor_botones">
+            <a href="Secciones_GAMOS.html" class="Boton">Secciones</a>
+            <a href="https://hep.uniandes.edu.co/index.php/es/" class="Boton">Recursos</a>
+        </div>             
+    </div>   
+    
+    <div class="Contenedor_Cabecera">
+		<img src="Img/montaje_experimental.png" class="Imagen_Cabecera">
+        <div class="Contenedor_Titulo">
+            <p class="Titulo">Montaje Experimental</p>
+            <p class="Descripcion_Titulo">En esta sección se darán los detalles del montaje experimental usado en el Laboratorio de Altas Energías de la Universidad de los Andes.</p>
+        </div>
+    </div>
+	
+	<div class="Contenedor_Contenido">
+		<p class="Subtitulo">Geometría del Montaje Experimental</p>
+		<p class="Texto Izquierda">El Montaje Experimental del Laboratorio de Altas Energías de la Universidad de los Andes consta de una cabina de plomo, una Fuente de rayos X microfocal Hamamatsu L10321, un Filtro de Rodio, un Detector Semiconductor Pixelado de la familia Medipix/Timepix, un sistema mecánico de posicionamiento y un computador con el software Pixelman y MFX Control Soft instalado para el procesamiento de las imágenes obtenidas y el ajuste de la configuración de la fuente. Un esquema interactivo del montaje y la interfaz de MFX Control Soft se muestra a continuación:</p>
+			<iframe src="Img/montaje.html" class="Imagen_Montaje" scrolling="no"> </iframe>
+		<p class="Texto Izquierda">La fuente de rayos X consta de un colimador de Plomo (Pb) de \(3.2\, cm\) de largo por \(2.5\,cm\) de diámetro, un ánodo de Tungsteno (W), una ventana de salida de Berilio (Be) con un grosor de \(0.5\, mm\), un rango de ajuste del voltaje del tubo de \(0\, KV\) a \(100\, KV\), un rango de ajuste de la corriente del tubo de \(0\, \mu A\) a \(200\, \mu A\) y un sistema de comunicación con el computador a través de un protocolo de transmisión RS-232C. El sistema de posicionamiento consiste en un conjunto de plataformas móviles con un sistema de rieles que permite mover la muestra en los ejes \(x,y\) y \(z\); el sistema es accionado por motores paso a paso y es controlado a través de un software basado en LabView. En cuanto a detectores, en el Laboratorio se emplean normalmente tres: El primero es el Medipix 3RX basado en Silicio, el segundo es el Medipix 3RX basado en Telurio de Cadmio (CdTe) y el tercero es el Timepix 3 basado en CdTe. Todos son detectores semiconductores con \(256 \times 256\) pixeles con un área de \(14\,mm \times 14\,mm\).</p>
+		<p class="Texto Izquierda"> Con el propósito de simular las características de un mamógrafo comercial, generalmente se asignan los siguientes parámetros para el montaje experimental:</p>
+		<table class="Tabla">
+			  <tr>
+				<th></th>
+				<th class="Color_2">Parámetro</th>
+				<th class="Color_2">Valor asignado</th>
+			  </tr>
+			<tr>
+				<td class="Color_2" rowspan="4">Montaje Experimental</td>
+				<td class="Color_1">Distancia fuente-detector</td>
+				<td class="Color_1">\(70\,cm\)</td>
+			  </tr>
+			  <tr>
+				<td class="Color_1">Distancia fuente-muestra</td>
+				<td class="Color_1">\(63\,cm\)</td>
+			  </tr>
+			  <tr>
+				<td class="Color_1">Distancia muestra-detector</td>
+				<td class="Color_1">\(7\,cm\)</td>
+			  </tr>
+			<tr>
+				<td class="Color_1">Grosor del Filtro de Rodio</td>
+				<td class="Color_1">\(50\,\mu m\)</td>
+			  </tr>
+			<tr>
+				<td class="Color_2" rowspan="2">Fuente de rayos X</td>
+				<td class="Color_1">Voltaje del tubo</td>
+				<td class="Color_1">\(28\,KV\)</td>
+			  </tr>
+			<tr>
+				<td class="Color_1">Corriente del tubo</td>
+				<td class="Color_1">\(150\,\mu A\)</td>
+			  </tr>
+			</table>
+	</div>
+
+	
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

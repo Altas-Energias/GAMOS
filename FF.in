@@ -1,0 +1,40 @@
+#################################### La descripcion de cada linea se encuentra en raw.in #########################################
+/gamos/setParam GmAnalysisMgr:FileNameSuffix .FF
+
+/gamos/setParam GmGeometryFromText:FileName principal_FF.geom
+/gamos/setParam GmGeometryFromText:FileNameParallel paralela.geom 1
+/gamos/geometry GmGeometryFromText
+/gamos/physicsList GmEMPhysics
+/gamos/generator GmGenerator
+#/gamos/verbosity GmBaseVerbosity debug
+#/gamos/verbosity GmScoringVerbosity debug
+
+/run/initialize
+
+/gamos/physics/addParallelProcess
+
+
+/gamos/generator/addSingleParticleSource fuente gamma 28.0*keV
+/gamos/generator/positionDist fuente GmGenerDistPositionInG4Volumes source
+#/gamos/generator/positionDist fuente GmGenerDistPositionPoint 0. 0. 0.
+/gamos/generator/directionDist fuente GmGenerDistDirectionCone 0. 0. 1. 0.9*deg
+/gamos/generator/energyDist fuente GmGenerDistEnergyFromFile 28.0keV interpolate
+
+
+/gamos/scoring/createMFDetector doseDet mesh
+/gamos/setParam doseScorer:ConvergenceTester DOSE_SCORER_TESTER
+/gamos/scoring/addScorer2MFD doseScorer GmG4PSDoseDeposit doseDet
+/gamos/filter inDetectorFilter GmInMassLogicalVolumeFilter detector
+/gamos/scoring/addFilter2Scorer inDetectorFilter doseScorer
+
+/gamos/setParam GmPSPrinter3ddose_doseScorer:FileName 3ddose_FF
+#/gamos/scoring/addPrinter2Scorer RTPSPDoseHistos doseScorer
+/gamos/scoring/addPrinter2Scorer GmPSPrinter3ddose doseScorer
+
+/process/msc/StepLimit Minimal
+
+/gamos/random/restoreSeeds 5000 22221
+
+#/control/execute ../visVRML2FILE.in
+
+/run/beamOn 2000000

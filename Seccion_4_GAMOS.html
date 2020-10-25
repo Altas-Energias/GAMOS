@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Seccion_4_GAMOS</title>
+<link href="Styles_Seccion_2_GAMOS.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    
+    <svg viewBox="0 0 1920 500" class="Fondo">
+        <path class="Figura_Fondo" d="M0,500c0,0,322.4,2.8,481.3-60s182.1-119.2,182.1-119.2s83.3-148.7,183.3-184.6
+	S1012.1,0,1012.1,0H0V500z"/>
+    </svg>
+    
+    <div class="Nav-Bar">
+    
+        <div class="Contenedor_Logo">
+            <img src="Img/Logo_Andes.svg" alt="logo" class="Logo">
+            <a class="Logo_Nombre">Laboratorio de Altas Energías</a>
+        </div>
+        
+        <div class="Contenedor_botones">
+            <a href="Secciones_GAMOS.html" class="Boton">Secciones</a>
+            <a href="https://hep.uniandes.edu.co/index.php/es/" class="Boton">Recursos</a>
+        </div>             
+    </div>   
+    
+    <div class="Contenedor_Cabecera">
+		<img src="Img/montaje_experimental.png" class="Imagen_Cabecera">
+        <div class="Contenedor_Titulo">
+            <p class="Titulo">Scripts de GAMOS</p>
+            <p class="Descripcion_Titulo">En esta sección se describirán todos los requisitos que se deben cumplir para poder ejecutar correctamente una simulación en GAMOS.</p>
+        </div>
+    </div>
+	
+	<div class="Contenedor_Contenido">
+		<p class="Subtitulo"></p>
+		<p class="Texto Izquierda">Para poder ejecutar una simulación de una imagen de rayos X en GAMOS es vital entender los requerimientos de usuario necesarios. Es decir, se necesita entender cómo ejecutar cada una de las acciones que deseamos dentro de la simulación a través de los comandos correctos. Los requerimientos de usuario se clasifican entre requerimientos de entrada y requerimientos de salida. Los requerimientos de entrada son aquellos que hacen referencia a los parámetros de entrada necesarios para correr una simulación en GAMOS. Dentro de estos parámetros se incluye la geometría del montaje experimental, el generador primario (primary generator) y la lista física (physics list).</p>
+		<p class="Texto Izquierda">La geometría puede ser definida a partir de un archivo de texto, especificando cada uno de los sólidos que componen el montaje experimental, el material del que están hechos, su color y su ubicación relativa. Generalmente para una simulación se definen dos archivos de geometría.  En el primero se definen todas las componentes del montaje experimental salvo el detector: el entorno, también conocido como mundo, la fuente de rayos X y el fantoma. Este archivo se conoce como geometría principal. Un ejemplo de lo que debe contener un archivo de texto que defina la geometría principal se muestra a continuación:</p>
+		<img src="Img/seccion_4_1.png" alt="logo" class="Imagenes">
+		<p class="Texto Izquierda">Primero se definen algunas variables necesarias para definir la geometría del montaje experimental a través del comando :P . Posteriormente, a través del comando :ROTM se pueden definir los ángulos de rotación de un sólido respecto a los ejes \(x,y\) y \(z\) respectivamente. En el ejemplo la matriz de rotación llamada R00, gira 0 grados cualquier sólido respecto a los tres ejes coordenados. Esta matriz R00, si bien no aporta ninguna información al montaje, es necesaria para más adelante poder definir los sólidos que componen el montaje. Luego, a través del comando :VOLU se crea el entorno o mundo, que es aquel volumen que contendrá todos los sólidos que hacen parte del montaje experimental. En la simulación el mundo juega el papel de la cabina de rayos X en el Laboratorio de Altas Energías. Dependiendo de la geometría del sólido que se quiera crear, los parámetros del comando :VOLU cambian, según lo dicta la <a href="http://fismed.ciemat.es/GAMOS/GAMOS_doc/GAMOS.6.1.0/GamosUsersGuide_V6.1.0.pdf" class="link">guía de usuario de GAMOS</a> desde la página 25 a la 33. Luego de crear el mundo se encuentra la definición de un material, al cual se le llamó Al2O3 a través del comando :MIXT. El comando :MIXT sigue los parámetros que indica la guía de GAMOS en las páginas 17 y 18.   Posterior a la creación de materiales, se comienzan a definir los sólidos que se encuentran dentro del mundo. En este caso primero se define una fuente llamada source, con forma de tubo hecho de aire de 1 mm de radio y 5 mm de largo, posicionado dentro del mundo en las coordenadas \((x,y,z) = ( 0\,mm, 0\,mm, 0\,mm)\). Se usa aire como material de la fuente dado que el posicionamiento de esta es solamente simbólico, con el fin de facilitar su ubicación en relación con los demás elementos del montaje. Para saber más acerca de los parámetros del comando :PLACE, usado para ubicar sólidos, se debe ir a la página 33 de la guía de GAMOS.  Por último se define un cubo de \(4\, cm \times 4\,cm \times 4\,cm\) llamado <i>cubo</i>, hecho de PMMA y ubicado a 65.63 cm respecto al eje z de la fuente de rayos X, que es el origen de las coordenadas dentro del mundo. En esta ocasión se añadió el comando :COLOR que permite cambiar el color de un sólido. Este cambio de color solo es apreciable en el diagrama 3D del montaje generado por GAMOS.</p>
+		<p class="Texto Izquierda">Por otra parte, en el segundo archivo se detalla la construcción del detector y es conocido como archivo de geometría paralela. Un ejemplo de la construcción de la geometría paralela se detalla a continuación:</p>
+		<img src="Img/seccion_4_2.png" alt="logo" class="Imagenes2">
+		<p class="Texto Izquierda">En este ejemplo se crea un detector de \(14\,mm \times 14\,mm \times 1\,mm\) hecho de Telurio de Cadmio a una distancia en el eje z igual al valor de la variable <i>source_detector_distance</i> que fue definida en la geometría principal con un valor de 70 cm y dividido en \(256 \times 256 \times 1\) voxeles. </p>
+		<p class="Texto Izquierda">Luego de la geometría, se encuentra el generador primario (primary generator), que permite la creación de partículas que interaccionarán con cada uno de los sólidos ya definidos. Cada partícula sigue una distribución de tiempo, posición o energía definida por el usuario. Este parámetro de entrada en pocas palabras permite reproducir el comportamiento de la fuente de rayos X del Laboratorio de Altas energías. Los comandos que definen el generador primario se incluyen generalmente en otro archivo de texto en el cual se incluyen todos los parámetros no geométricos de la simulación. Un ejemplo de cómo se define un generador primario se muestra a continuación: </p>
+		<img src="Img/seccion_4_3.png" alt="logo" class="Imagenes2">
+		<p class="Texto Izquierda">En la primera línea se define una fuente de fotones (gamma) llamada <i>fuente</i> que, en principio, emite fotones a 28 keV solamente. En la segunda línea se asocia la fuente creada con el sólido llamado <i>source</i> definido en la geometría principal. De esta forma, la fuente se ubicará donde esté el sólido <i>source</i> en la geometría. La tercera línea que se encuentra comentada, es una alternativa al comando ejecutado en la segunda para ubicar directamente la fuente en un determinado punto (x,y,z). En la cuarta línea se define que las partículas emitidas por la fuente sigan una forma de cono, cuyo eje principal se extiende sobre el eje (0,0,1) y tiene un ángulo de apertura de 0.9°.</p>
+		<p class="Texto Izquierda">Cómo último parámetro de entrada se encuentra la lista física, la cual permite incluir dentro de la simulación todas las posibles interacciones entre partículas descritas por la electrodinámica cuántica (QED). Esta lista física se añade al mismo archivo de texto para parámetros no geométricos de la simulación a través del siguiente comando:</p>
+		<img src="Img/seccion_4_4.png" alt="logo" class="Imagenes1">
+		<p class="Texto Izquierda">Por otra parte, están los requerimientos de salida, los cuales se asocian a los diferentes mecanismos de extracción de datos generados en cada simulación.  El primer requerimiento de salida permite crear un detector sensible el cual tendrá la posibilidad de poder recolectar datos del número de fotones incidentes voxel a voxel y será asociado al detector creado en la geometría. Para cumplir con este requerimiento basta con escribir las siguientes líneas en el mismo archivo de texto donde se definió el generador primario y la lista física:</p>
+		<img src="Img/seccion_4_5.png" alt="logo" class="Imagenes1">
+		<p class="Texto Izquierda">En la primera línea se define el detector sensible, llamado <i>doseDet</i> y se asocia al volumen mesh, que dentro de la geometría representa el arreglo de voxeles. En la segunda línea se exige a GAMOS que se haga una prueba de convergencia, con el fin de saber si no hay errores en los datos recolectados por el detector. En la tercera línea se exige que los datos recolectados por el detector sensible sean datos de dosis por voxel y se guarden en <i>doseScorer</i>.</p>
+		<p class="Texto Izquierda">El segundo requerimiento de salida se relaciona con el tipo de partícula que se quiere detectar. En el caso de simulaciones con rayos X lo que se espera es que se detecten solamente fotones, por lo que las demás partículas que puedan generarse en la simulación deben ser filtradas. Para crear este filtro basta con poner en el mismo archivo de texto donde se creó el detector sensible la siguiente línea:</p>
+		<img src="Img/seccion_4_6.png" alt="logo" class="Imagenes1">
+		<p class="Texto Izquierda">En esta línea se crea el filtro y se aplica a los datos obtenidos en <i>doseScorer</i>. Como último requerimiento de salida se encuentra el “scoring”, el cual permite extraer la información obtenida por el detector y guardarla en un formato que pueda ser conveniente para su posterior procesamiento. Generalmente se prefiere guardar esta información en archivos de texto que puedan ser cargados por cualquier lenguaje de programación. Para lograrlo se tienen que incluir las siguientes dos líneas en el mismo archivo donde se definió el detector sensible: </p>
+		<img src="Img/seccion_4_7.png" alt="logo" class="Imagenes1">
+		<p class="Texto Izquierda">En la primera línea se define el nombre del archivo de texto que contendrá los datos recolectados por el detector simulado, que en este caso es <i>3ddose_FF</i>, mientras que en la segunda se exige que los datos recolectados en <i>doseScorer</i> se guarden en <i>3ddose_FF</i>.</p>
+		<p class="Texto Izquierda">Con los requerimientos de entrada y salida claros ya es posible construir todo el código necesario para ejecutar una simulación de una imagen de rayos X tomada en el Laboratorio de Altas Energías. Un ejemplo concreto de cómo debe ser el código para obtener una imagen de rayos X se puede observar en este <a href="https://github.com/Altas-Energias/scripts-GAMOS" class="link">enlace</a>, donde también se encuentran los detalles de la geometría de la simulación. Para correr la simulación basta con activar GAMOS en el servidor que desee con el comando <i>gamos raw.in</i> en el caso en el que se quiera obtener una imagen cruda o <i>gamos FF.in</i> en el caso de obtener una imagen de campo plano.</p>
+	</div>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

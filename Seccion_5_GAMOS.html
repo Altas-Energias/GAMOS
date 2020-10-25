@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Seccion_5_GAMOS</title>
+<link href="Styles_Seccion_2_GAMOS.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    
+    <svg viewBox="0 0 1920 500" class="Fondo">
+        <path class="Figura_Fondo" d="M0,500c0,0,322.4,2.8,481.3-60s182.1-119.2,182.1-119.2s83.3-148.7,183.3-184.6
+	S1012.1,0,1012.1,0H0V500z"/>
+    </svg>
+    
+    <div class="Nav-Bar">
+    
+        <div class="Contenedor_Logo">
+            <img src="Img/Logo_Andes.svg" alt="logo" class="Logo">
+            <a class="Logo_Nombre">Laboratorio de Altas Energías</a>
+        </div>
+        
+        <div class="Contenedor_botones">
+            <a href="Secciones_GAMOS.html" class="Boton">Secciones</a>
+            <a href="https://hep.uniandes.edu.co/index.php/es/" class="Boton">Recursos</a>
+        </div>             
+    </div>   
+    
+    <div class="Contenedor_Cabecera">
+		<img src="Img/montaje_experimental.png" class="Imagen_Cabecera">
+        <div class="Contenedor_Titulo">
+            <p class="Titulo">Scripts externos</p>
+            <p class="Descripcion_Titulo">En esta sección se describirá un script externo que se usa para ejeutar varias simulaciones en paralelo.</p>
+        </div>
+    </div>
+	
+	<div class="Contenedor_Contenido">
+		<p class="Subtitulo"></p>
+		<p class="Texto Izquierda">Para ejecutar simultáneamente varias simulaciones en GAMOS dentro de DZero y DZero1 existe un código creado ya probado. Este código fue escrito por algunos miembros del Laboratorio de Altas Energías y permite ejecutar un determinado número de simulaciones a partir de ciertos parámetros de entrada. Hay dos versiones de este código que permiten correr tanto simulaciones para obtener imágenes crudas o RAW de un fantoma como también para obtener imágenes de campo plano o Flat Field (FF). El código está escrito en bash y recibe como entrada cinco parámetros. </p>
+		<p class="Texto Izquierda">El primer parámetro de entrada, que es voltaje de la fuente, debe ser un número con un solo decimal, separado por un punto. Para este código se asume que el archivo que contiene el espectro de energías de la fuente tiene un nombre que sigue el siguiente formato: Si el voltaje de la fuente es, por ejemplo, 28 keV, entonces el archivo se debe llamar <i>28.0keV</i>. Si por otra parte el voltaje es, por ejemplo, 10.3 keV, entonces el archivo debería llamarse <i>10.3keV</i>. El segundo parámetro de entrada debe ser un número entre 1000 y 5000, llamado semilla aleatoria, que permite que los resultados de cada simulación sean estadísticamente independientes. El tercer parámetro es un número entero que dicta a cada una de las simulaciones cuántos fotones crear desde la fuente de rayos X simulada. El cuarto parámetro es un número entero que representa el número de simulaciones que se quieren ejecutar. Por último, el quinto parámetro es un índice que permite diferenciar cada uno de los archivos de salida de cada simulación. Si llamamos <i>i</i> al índice y <i>nj</i> al número de simulaciones que se quieren ejecutar, entonces los archivos resultantes tendrán en su nombre un número distintivo, desde el <i>i</i> hasta el <i>i + nj</i>.  El script también asume que el nombre del archivo que contiene todos los parámetros no geométricos de la simulación tiene por nombre <i>raw.in</i> en el caso de querer obtener imágenes crudas o <i>FF.in</i> en el caso de querer ejecutar simulaciones para obtener imágenes de campo plano. </p>
+		<p class="Texto Izquierda">A grandes rasgos lo que realiza este código es crear un número de copias del archivo que contiene los parámetros no geométricos de la simulación igual al número de simulaciones que se quieren correr y ejecutar cada una de estas copias como procesos en segundo plano del servidor. Sin embargo, cada código está comentado debidamente para que cada línea se pueda entender fácilmente. El código tanto para correr imágenes crudas como de campo plano se encuentran en este <a href="https://github.com/Altas-Energias/scripts-GAMOS" class="link">enlace</a> con los nombres <i>sendjobs_raw</i> y <i>sendjobs_FF</i> respectivamente.  Para correr el código basta simplemente con ejecutar en consola algo como lo siguiente:</p>
+		<img src="Img/seccion_5_1.png" alt="logo" class="Imagenes1">
+	  <p class="Texto Izquierda">En este caso se está corriendo el código para obtener 83 imágenes crudas, con un voltaje de fuente de 28.0 kV, una semilla aleatoria de 1000, un número de fotones de 475243 y con un índice inicial de cero.</p>
+		<p class="Texto Izquierda">Una vez ejecutados los procesos se puede vigilar el estado de estos a través del comando <i>top</i>. Usando este comando se podrán observar todos los procesos que se están ejecutando en el servidor, así como el usuario que los ejecutó. Para salir de esta ventana basta con escribir <i>.q</i> y dar enter. En el mismo enlace donde se encuentran los scripts anteriormente descritos se encuentran algunos cuadernos de Jupyter que serán de utilidad para poder procesar los resultados obtenidos de GAMOS.</p>
+</div>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

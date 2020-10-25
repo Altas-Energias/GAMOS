@@ -69,15 +69,6 @@ body{
 }
 .Imagen_Cabecera{
     width: 50%;
-	overflow: hidden;
-	border:none;
-}
-.Imagen_Montaje{
-    width: 150%;
-	height: 70vh;
-	transform: scale(0.8);
-	overflow: hidden;
-	border:none;
 }
 .Contenedor_Titulo{
     display: flex;
@@ -132,27 +123,4 @@ body{
 .Fila{
 	display: flex;
 	flex-direction: row;
-}
-.Tabla{
-	width: 95%;
-}
-.Tabla .Color_2{
-	background: #adabd6;
-	text-align: center;
-	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-	padding-top: 0.5vh;
-	padding-bottom: 0.5vh;
-}
-.Tabla .Color_1{
-	background: #cdcce6;
-	text-align: center;
-	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-	padding-top: 0.5vh;
-	padding-bottom: 0.5vh;
-}
-.Imagenes{
-    width: 35%;
-}
-.Imagenes2{
-    width: 60%;
 }

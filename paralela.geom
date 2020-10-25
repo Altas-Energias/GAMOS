@@ -6,7 +6,7 @@
 :P grosor_pixel_z_medios 1.0/2.0
 :P grosor_pixel_z 1.0
 
-### Se crea un detector de Telurio de Cadmio de tamano 14 mm x 14 mm x 1 mm (Medipix3RX)
+// Se crea un detector de Telurio de Cadmio de tamano 14 mm x 14 mm x 1 mm (Medipix3RX)
 
 :VOLU mesh_container BOX $x_container $y_container $z_container G4_AIR
 :PLACE mesh_container 1 world R00 0.0 0.0 $source_detector_distance

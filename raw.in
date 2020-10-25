@@ -75,11 +75,9 @@
 #/gamos/setParam RTPSPDoseHistos:FileName root_raw
 #Crea archivo de texto con datos almacenados llamado "3ddose_raw"
 /gamos/setParam GmPSPrinter3ddose_doseScorer:FileName 3ddose_raw
-/gamos/setParam GmPSPrinterSqdose_doseScorer:FileName Sqdose_raw
 /gamos/scoring/addPrinter2Scorer RTPSPDoseHistos doseScorer
 # Guarda los datos de la variable "doseScorer" y los imprime en un archivo de texto
 /gamos/scoring/addPrinter2Scorer GmPSPrinter3ddose doseScorer
-/gamos/scoring/addPrinter2Scorer GmPSPrinterSqdose doseScorer
 
 #########################
 

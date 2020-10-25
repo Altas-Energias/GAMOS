@@ -28,10 +28,7 @@ do
   awk -v ENERGY=$ENERGY -v SEED=$SEED -v NEV=$NEV -v nj=$nj -v SUFFIX=$SUFFIX '{
     if($1=="/run/beamOn") {printf("%s %s \n",$1, NEV) }      
     else if ($1=="/gamos/random/restoreSeeds") {printf("%s %s %s\n",$1, SEED+nj, SEED+(2*nj)) }
-   # else if($2=="RTPSPDoseHistos:FileName") {printf("%s %s %s\n",$1, $2, "root_raw."SUFFIX) }
     else if($2=="GmPSPrinter3ddose_doseScorer:FileName") {printf("%s %s %s\n",$1, $2, "3ddose_raw."SUFFIX) }
-    else if($2=="GmPSPrinterSqdose_doseScorer:FileName") {printf("%s %s %s\n",$1, $2, "Sqdose_raw."SUFFIX) }
-    #else if($2=="hits.text:FileName") {printf("%s %s %s\n",$1, $2, "hits."SUFFIX) }
     else if($1=="/gamos/generator/addSingleParticleSource") {printf("%s %s %s %s\n",$1,$2,$3,ENERGY"*keV") }
     else if($1=="/gamos/generator/energyDist") {printf("%s %s %s %s\n",$1,$2,$3,ENERGY"keV") }
     else { print $0 }
@@ -39,8 +36,6 @@ do
 
 ### run job in background 
   gamos $new_inputfile".inn" 2>&1 | tee $log_inputfile &
-### run job in foreground 
-#  gamos $new_inputfile".inn" 2>&1 | tee $log_inputfile 
 
 nj=$(($nj + 1))
 

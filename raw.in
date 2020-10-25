@@ -1,0 +1,96 @@
+######################## ALGUNAS ESPECIFICACIONES PREVIAS ################################
+
+# Permite que todos los archivos producidos por GAMOS tengan ".raw" en su nombre. Esto es para diferenciar archivos .FF.root de .raw.root.
+/gamos/setParam GmAnalysisMgr:FileNameSuffix .raw
+
+# Declarar que el archivo principal de geometria es "principal_raw.geom"
+/gamos/setParam GmGeometryFromText:FileName principal_raw.geom
+
+# Declarar que el archivo de geometria paralela es "paralela.geom". El 1 hace referencia a que solo hay un archivo de geometria paralela (porque solo hay un detector)
+/gamos/setParam GmGeometryFromText:FileNameParallel paralela.geom 1
+
+# La geometria se carga desde archivos de texto (los .geom)
+/gamos/geometry GmGeometryFromText
+
+# Esto incluye todo el paquete de analisis de variables fisicas en la simulacion, asociadas a particulas electromagneticas (fotones, electrones y positrones)
+/gamos/physicsList GmEMPhysics
+
+# Se declara que se usara el generador de particulas de GAMOS
+/gamos/generator GmGenerator
+
+# Se comienza a correr la simulacion
+/run/initialize
+
+# Este comando permite que la geometria paralela este presente en la simulacion
+/gamos/physics/addParallelProcess
+
+#########################
+
+
+#################################### FUENTE DE RAYOS X ##################################
+
+# Se agrega a la simulacion una fuente de fotones (simbolizados con la letra "gamma") a 28 keV (energia maxima). La fuente es llamada "fuente". Las unidades de medida en GAMOS estan definidas con un asterisco siempre: *keV, *MeV, *mm, *cm, etc...
+/gamos/generator/addSingleParticleSource fuente gamma 28.0*keV
+
+
+# Se posiciona el origen de la fuente, llamada "fuente", en un volumen de la geometria. Se asocia la fuente virtual con un volumen de la geometria. En este caso, en el volumen llamado "source"
+/gamos/generator/positionDist fuente GmGenerDistPositionInG4Volumes source
+
+# Esta linea es una alternativa al comando anterior. En este caso la fuente, llamada "fuente", se posiciona en la posicion  0.0 en x (en mm dado que no tiene definida la medida), 0.0 en y, 0.0 en z dentro del mundo.
+#/gamos/generator/positionDist fuente GmGenerDistPositionPoint 0.0 0.0 0.0
+
+# Establece la direccion del rayo de fotones y su apertura. En este caso la direccion es 0 en x, 0 en y, 1 en z (todo el rayo en z) y el rayo tiene una apertura de 0.9 grados. Esta apertura tiene que estimarse previamente.
+/gamos/generator/directionDist fuente GmGenerDistDirectionCone 0.0 0.0 1.0 0.9*deg
+
+# Tambien es posible poner un comando que permita introducir la distribucion de numero de fotones de una fuente real. El archivo, en este caso, es un archivo de texto llamado "28.0keV". La opcion interpolate toma los puntos de la curva y los interpola para tener mas valores posibles.
+/gamos/generator/energyDist fuente GmGenerDistEnergyFromFile 28.0keV interpolate
+
+########################
+
+
+############################### HACER "SENSIBLE" EL DETECTOR QUE YA EXISTE EN LA GEOMETRIA PARALELA ##############################
+
+### "Sensible": que el detector pueda detectar fotones ###
+
+# Permite que cada pixel (mesh) sea sensible a interacciones. Ahora este pixel sensible es llamado "doseDet"
+/gamos/scoring/createMFDetector doseDet mesh
+
+# Sirve para encontrar comportamientos erroneos en el proceso de deteccion de fotones
+/gamos/setParam doseScorer:ConvergenceTester DOSE_SCORER_TESTER
+
+# Se permite que los datos producidos por detecciones de fotones sean guardados por el almacenador de datos de dosis llamado "doseScorer"
+/gamos/scoring/addScorer2MFD doseScorer GmG4PSDoseDeposit doseDet
+
+# Se implementa un filtro llamado " inDetectorFilter" que permite que los fotones interactuen con la lamina de material semiconductor llamada "detector"
+/gamos/filter inDetectorFilter GmInMassLogicalVolumeFilter detector
+
+# Permite seleccionar que tipo de trazas seran guardadas por el almacenador de datos de dosis
+/gamos/scoring/addFilter2Scorer inDetectorFilter doseScorer
+
+################################
+
+######################### CREAR HISTOGRAMAS E IMAGENES ##################################
+
+# Permite que los datos guardados sean graficados en un archivo de root
+#/gamos/setParam RTPSPDoseHistos:FileName root_raw
+#Crea archivo de texto con datos almacenados llamado "3ddose_raw"
+/gamos/setParam GmPSPrinter3ddose_doseScorer:FileName 3ddose_raw
+/gamos/setParam GmPSPrinterSqdose_doseScorer:FileName Sqdose_raw
+/gamos/scoring/addPrinter2Scorer RTPSPDoseHistos doseScorer
+# Guarda los datos de la variable "doseScorer" y los imprime en un archivo de texto
+/gamos/scoring/addPrinter2Scorer GmPSPrinter3ddose doseScorer
+/gamos/scoring/addPrinter2Scorer GmPSPrinterSqdose doseScorer
+
+#########################
+
+#Comando para ignorar interacciones no necesarias. Para que no se demore tanto, basicamente.
+/process/msc/StepLimit Minimal
+
+# Permite que cada vez que se ejecute la simulacion, las imagenes sean estadisticamente diferentes entre si, cambiando los dos numeros.
+/gamos/random/restoreSeeds 5000 22221
+
+# Permite obtener imagen 3D de la geometria con extension .wrl
+#/control/execute visVRML2FILE.in
+
+# Se "enciende" la fuente para que sean expulsados N igual 1000000 fotones (el maximo posible es de (2^31) -1 fotones)
+/run/beamOn 1000000

@@ -1,7 +1,7 @@
 #include NIST_materials.txt
 #include NIST_elements.txt
 
-// Para la imagen de campo plano se toma el mismo fantoma creado en principal_raw.geom pero sin la bola de acero
+// Para la imagen de campo plano en este caso se toma el mismo fantoma creado en principal_raw.geom pero sin la bola de acero
 
 :P source_detector_distance 70.0*cm
 

@@ -1,6 +1,8 @@
 #include NIST_materials.txt
 #include NIST_elements.txt
 
+// Para la imagen de campo plano se toma el mismo fantoma creado en principal_raw.geom pero sin la bola de acero
+
 :P source_detector_distance 70.0*cm
 
 
@@ -27,7 +29,6 @@
 :VOLU cubo BOX 2.0*cm 2.0*cm 2.0*cm NIST_PMMA
 :PLACE cubo 1 world R00 0.0 0.0 65.63*cm 
 :COLOUR cubo 198 251 145
-
 
 :VOLU detector BOX $x_detector $y_detector $z_detector G4_CADMIUM_TELLURIDE
 :PLACE detector 1 world R00 0. 0. $source_detector_distance

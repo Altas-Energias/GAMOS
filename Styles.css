@@ -20,7 +20,7 @@ body{
     height: 10vh;
 }
 .Contenedor_Logo{
-    width: 25%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +32,8 @@ body{
 .Logo_Nombre{
     font-size: 171%;
     font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	color: #000000;
 }
 .Contenedor_botones{
     width:40%;
@@ -50,7 +52,7 @@ body{
     font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 }
 .Boton:hover{
-    background: #A0A0F8;
+    background: #ffff00;
 }
 
 .Contenedor_Contenido{

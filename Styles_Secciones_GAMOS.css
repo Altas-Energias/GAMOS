@@ -28,6 +28,8 @@ body{
 .Logo_Nombre{
     font-size: 171%;
     font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	color: #000000;
 }
 .Contenedor_botones{
     width: 30%;

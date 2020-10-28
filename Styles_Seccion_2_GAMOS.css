@@ -15,7 +15,7 @@ body{
     margin-top: -2%;
 }
 .Figura_Fondo{
-    fill: #A0A0F8;
+    fill: #ffff33;
 }
 .Nav-Bar{
     width: 90%;
@@ -38,6 +38,8 @@ body{
 .Logo_Nombre{
     font-size: 171%;
     font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	color: #000000;
 }
 .Contenedor_botones{
     width: 23%;
@@ -56,7 +58,7 @@ body{
     font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 }
 .Boton:hover{
-    background: #A0A0F8;
+    background: #ffff00;
 }
 .Contenedor_Cabecera{
     width: 90%;
@@ -113,7 +115,7 @@ body{
     text-align: justify;
 }
 .Codigo{
-    color: #8080ff;
+    color: #cccc00;
     text-align: justify;
     font-weight: bold;
 }
@@ -123,11 +125,11 @@ body{
 }
 .link{
 	text-decoration: none;
-	color: #8080ff;
+	color: #cccc00;
 }
 .link:hover{
 	color: #000000;
-	background: #8080ff;
+	background: #ffff33;
 }
 .Fila{
 	display: flex;
@@ -137,14 +139,14 @@ body{
 	width: 95%;
 }
 .Tabla .Color_2{
-	background: #adabd6;
+	background: #ffff4d;
 	text-align: center;
 	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 	padding-top: 0.5vh;
 	padding-bottom: 0.5vh;
 }
 .Tabla .Color_1{
-	background: #cdcce6;
+	background: #ffff99;
 	text-align: center;
 	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 	padding-top: 0.5vh;
